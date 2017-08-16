@@ -21,6 +21,19 @@ import utils
 
 import tensorflow.contrib.slim as slim
 
+
+class CnnLogisticModel(models.BaseModel):
+  """CnnLogistic model with L2 regularization."""
+  
+  def create_model(self, model_input, num_classes=2, l2_penalty=1e-8, **unused_params):
+    net = slim.conv2d(model_input, 32, [3, 3], scope='conv1')
+    net = slim.max_pool2d(net, [2, 2], scope='pool1')
+    net = slim.flatten(model_input)
+    output = slim.fully_connected(
+        net, num_classes - 1, activation_fn=tf.nn.sigmoid,
+        weights_regularizer=slim.l2_regularizer(l2_penalty))
+    return {"predictions": output}
+
 class LogisticModel(models.BaseModel):
   """Logistic model with L2 regularization."""
 
