@@ -26,9 +26,9 @@ class CnnLogisticModel(models.BaseModel):
   """CnnLogistic model with L2 regularization."""
 
   def create_model(self, model_input, num_classes=2, l2_penalty=1e-8, **unused_params):
-    # net = slim.conv2d(model_input, 64, [3, 3], scope='conv1_1')
+    net = slim.conv2d(model_input, 64, [3, 3], scope='conv1_1')
     # net = slim.conv2d(net, 64, [3, 3], scope='conv1_2')
-    # net = slim.max_pool2d(net, [2, 2], scope='pool1')
+    net = slim.max_pool2d(net, [2, 2], scope='pool1')
 
     # net = slim.conv2d(net, 128, [3, 3], scope='conv2_1')
     # net = slim.conv2d(net, 128, [3, 3], scope='conv2_2')
@@ -38,7 +38,7 @@ class CnnLogisticModel(models.BaseModel):
     # net = slim.conv2d(net, 258, [3, 3], scope='conv3_2')
     # net = slim.max_pool2d(net, [2, 2], scope='pool3')
     
-    net = slim.flatten(model_input)
+    net = slim.flatten(net)
     output = slim.fully_connected(
         net, num_classes - 1, activation_fn=tf.nn.sigmoid,
         weights_regularizer=slim.l2_regularizer(l2_penalty))
