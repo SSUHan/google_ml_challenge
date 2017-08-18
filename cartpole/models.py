@@ -320,7 +320,7 @@ class PolicyGradient(BaseModel):
     gamma = .99
     discounted_r = np.zeros_like(r)
     running_add = 0
-    for t in reversed(xrange(0, r.size)):
+    for t in reversed(range(0, r.size)):
       running_add = running_add * gamma + r[t]
       discounted_r[t] = running_add
     return discounted_r
