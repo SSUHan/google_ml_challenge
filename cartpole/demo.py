@@ -8,10 +8,10 @@ from statistics import median, mean
 from collections import Counter
 
 
-LR = 1e-3
+LR = 1e-4
 goal_steps = 500
 score_requirement = 50
-initial_games = 20000
+initial_games = 100000
 
 env = gym.make('CartPole-v0')
 # print(env.action_space)
@@ -143,8 +143,10 @@ def check_model_output(model):
 
 if __name__ == '__main__':
 	# initial_population()
-	training_data = np.load('saved_46639.npy')
+	training_data_len  = 221217
+	training_data = np.load('saved_{}.npy'.format(training_data_len))
 	model = train_model(training_data, epochs=100)
+	model.save('model_{}.tflearn'.format(training_data_len))
 	# check_model_output(model)
 
 # for each_episode in range(500):
