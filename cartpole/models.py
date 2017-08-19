@@ -150,10 +150,10 @@ class PolicyGradient(BaseModel):
   # Modify the graph below, but add return values for the graph so we can save the model
   def build_graph(self, global_step):
 
-    self.H = 10 # number of hidden layer neurons
+    self.H = 128 # number of hidden layer neurons
     self.gamma = 0.99 # discount factor for reward
     self.D = 4 #input dimension
-    self.learning_rate = 1e-2 #learning rate
+    self.learning_rate = 1e-3 #learning rate
 
     observations = tf.placeholder(tf.float32, [None, self.D] , name="input_x")
     W1 = tf.get_variable("W1", shape=[self.D, self.H],

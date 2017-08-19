@@ -143,11 +143,13 @@ def check_model_output(model):
 
 if __name__ == '__main__':
 	# initial_population()
-	training_data_len  = 221217
-	training_data = np.load('saved_{}.npy'.format(training_data_len))
-	model = train_model(training_data, epochs=100)
-	model.save('model_{}.tflearn'.format(training_data_len))
-	# check_model_output(model)
+	# training_data_len  = 221217
+	# training_data = np.load('saved_{}.npy'.format(training_data_len))
+	# model = train_model(training_data, epochs=100)
+	model = neural_network_model(input_size=4)
+	model.load('models/model_221217.tflearn')
+	# model.save('model_{}.tflearn'.format(training_data_len))
+	check_model_output(model)
 
 # for each_episode in range(500):
 # 	observation = env.reset()
