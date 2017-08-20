@@ -40,7 +40,7 @@ if __name__ == "__main__":
       "rendering", False,
       "If True, this will render the environment but drastically slow down training")
 
-  flags.DEFINE_integer("export_model_steps", 50,
+  flags.DEFINE_integer("export_model_steps", 100,
                        "The period, in number of steps, with which the model "
                        "is exported for batch prediction.")
 

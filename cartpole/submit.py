@@ -191,7 +191,7 @@ def main(unused_argv):
           observation = env.reset()
           done = False
 
-      print ""
+      print("")
       logging.info('Total reward: %d, Avg reward: %f' % (running_reward_sum, running_reward_sum / total_episodes))
 
       avg_reward_sum = running_reward_sum / total_episodes
@@ -201,7 +201,7 @@ def main(unused_argv):
 
       import getpass
       results = env.submit(conf.kaggle_user, conf.kaggle_passwd)
-      print results
+      print(results)
 
 
 if __name__ == "__main__":

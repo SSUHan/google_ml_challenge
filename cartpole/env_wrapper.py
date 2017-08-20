@@ -1,10 +1,10 @@
-import urllib2
 import logging
 import sys
 import json
 import numpy as np
 import time
 import urllib
+from urllib.request import urlopen
 class Service(object):
 
   SERVER = "https://mlcc-158008.appspot.com"
